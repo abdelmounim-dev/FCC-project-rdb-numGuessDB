@@ -15,6 +15,7 @@ then
 	INSERT_USER_RESULT=$($PSQL "insert into users (username) values ('$USERNAME')")
 	if [[ INSERT_USER_RESULT = "INSERT 0 1" ]]
 	then 
+		NEW=true
 		echo -e "\nWelcome, $USERNAME! It looks like this is your first time here."
 	else 
 		echo -e "\nDB ERROR"
@@ -30,7 +31,7 @@ fi
 
 # Gess?
 
-counter=1
+COUNTER=1
 
 # Start a while loop
 while true
@@ -41,7 +42,7 @@ do
 	then
 		echo -e "\nThat is not an integer, guess again:"
 	else 
-		if (( GUESS = NUM ))
+		if (( GUESS == NUM ))
 		then 
 			echo -e "\nYou guessed it in $COUNTER tires. The secret number was $NUM. Nice job!"
 			break
@@ -52,6 +53,30 @@ do
 		fi
 	fi
     # Increment the counter
-    ((counter++))
+    ((COUNTER++))
 
 done
+
+UPDATE_NGAMES_RESULT=$($PSQL "update users set num_games = num_games + 1")
+
+if [[ -z $BEST_GAME || $COUNTER < $BEST_GAME ]]
+then 
+	UPDATE_RESULT=$($PSQL "update users set best_game = $COUNTER where username = '$USERNAME'")
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
