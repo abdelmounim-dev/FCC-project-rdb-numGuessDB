@@ -49,6 +49,7 @@ do
 		then 
 			echo -e "\nIt's higher than that, guess again:"
 		else echo -e "\nIt's lower than that, guess again:"
+		fi
 	fi
     # Increment the counter
     ((counter++))
