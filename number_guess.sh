@@ -46,7 +46,7 @@ do
 		if (( GUESS == NUM ))
 		then 
 			# ((COUNTER++))
-			echo -e "You guessed it in $COUNTER tries. The secret number was $NUM. Nice job!"
+			echo -e "You guessed it in $COUNTER tries. The secret number was $NUM. Nice job!\n"
 			# ((COUNTER--))
 			break
 		elif (( GUESS < NUM ))
