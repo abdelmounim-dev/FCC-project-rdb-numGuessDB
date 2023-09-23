@@ -6,7 +6,7 @@ NUM=$(( $RANDOM % 1000 + 1))
 
 
 
-echo -e "Enter your username:"
+echo -e "\nEnter your username:"
 read USERNAME
 # check if user already exists
 USER_RESULT=$($PSQL "select username, num_games, best_game from users where username = '$USERNAME'")
@@ -31,7 +31,7 @@ fi
 
 # Gess?
 
-COUNTER=1
+COUNTER=0
 
 # Start a while loop
 while true
